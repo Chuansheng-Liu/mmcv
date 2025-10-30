@@ -37,6 +37,11 @@ namespace tv {
 #define TV_HOST_DEVICE_INLINE __forceinline__ __device__
 #define TV_DEVICE_INLINE __forceinline__ __device__
 #define TV_HOST_DEVICE __device__ __host__
+#elif defined(__SYCL_DEVICE_ONLY__) || defined(__INTEL_LLVM_COMPILER)
+#define TV_ASSERT(expr) assert(expr)
+#define TV_HOST_DEVICE_INLINE inline
+#define TV_DEVICE_INLINE inline
+#define TV_HOST_DEVICE
 #else
 #define TV_ASSERT(x) assert(x)
 #define TV_HOST_DEVICE_INLINE inline
@@ -51,11 +56,21 @@ namespace tv {
     }                         \
   }
 
+#if defined(__CUDA_ARCH__)
 #define TV_DEVICE_REQUIRE(expr, ...)                      \
   {                                                       \
     if (!(expr) && threadIdx.x == 0) printf(__VA_ARGS__); \
     assert(expr);                                         \
   }
+#else
+#define TV_DEVICE_REQUIRE(expr, ...) \
+  {                                 \
+    if (!(expr)) {                   \
+      printf(__VA_ARGS__);           \
+      assert(expr);                  \
+    }                                \
+  }
+#endif
 
 template <class SStream, class T>
 void sstream_print(SStream &ss, T val) {
@@ -90,6 +105,7 @@ void sstream_print(SStream &ss, T val, TArgs... args) {
     }                                                   \
   }
 
+#if defined(__CUDACC__)
 #define TV_CHECK_CUDA_ERR()                                    \
   {                                                            \
     auto err = cudaGetLastError();                             \
@@ -100,6 +116,9 @@ void sstream_print(SStream &ss, T val, TArgs... args) {
       throw std::runtime_error(__macro_s.str());               \
     }                                                          \
   }
+#else
+#define TV_CHECK_CUDA_ERR()
+#endif
 
 struct CPU {};
 

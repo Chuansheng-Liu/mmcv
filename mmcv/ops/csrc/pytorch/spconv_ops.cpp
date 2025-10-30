@@ -35,6 +35,20 @@ std::vector<torch::Tensor> get_indice_pairs_forward_cuda(
       padding, dilation, outPadding, _subM, _transpose);
 };
 
+#ifdef MMCV_WITH_XPU
+template <unsigned NDim>
+std::vector<torch::Tensor> get_indice_pairs_forward_xpu(
+    torch::Tensor indices, int64_t batchSize,
+    std::vector<int64_t> outSpatialShape, std::vector<int64_t> spatialShape,
+    std::vector<int64_t> kernelSize, std::vector<int64_t> stride,
+    std::vector<int64_t> padding, std::vector<int64_t> dilation,
+    std::vector<int64_t> outPadding, int64_t _subM, int64_t _transpose) {
+  return GetIndicePairsForwardCUDAKernelLauncher<NDim>(
+      indices, batchSize, outSpatialShape, spatialShape, kernelSize, stride,
+      padding, dilation, outPadding, _subM, _transpose);
+};
+#endif
+
 template <unsigned NDim>
 std::vector<torch::Tensor> GetIndicePairsForwardMLUKernelLauncher(
     torch::Tensor indices, int64_t batchSize,
@@ -75,6 +89,20 @@ std::vector<torch::Tensor> get_indice_pairs_backward_cuda(
       stride, padding, dilation, outPadding, _subM, _transpose);
 };
 
+#ifdef MMCV_WITH_XPU
+template <unsigned NDim>
+std::vector<torch::Tensor> get_indice_pairs_backward_xpu(
+    torch::Tensor indices, torch::Tensor gridOut, int64_t batchSize,
+    std::vector<int64_t> outSpatialShape, std::vector<int64_t> spatialShape,
+    std::vector<int64_t> kernelSize, std::vector<int64_t> stride,
+    std::vector<int64_t> padding, std::vector<int64_t> dilation,
+    std::vector<int64_t> outPadding, int64_t _subM, int64_t _transpose) {
+  return GetIndicePairsBackwardCUDAKernelLauncher<NDim>(
+      indices, gridOut, batchSize, outSpatialShape, spatialShape, kernelSize,
+      stride, padding, dilation, outPadding, _subM, _transpose);
+};
+#endif
+
 template <unsigned NDim>
 std::vector<torch::Tensor> get_indice_pairs_forward(
     torch::Tensor indices, int64_t batchSize,
@@ -91,6 +119,14 @@ std::vector<torch::Tensor> get_indice_pairs_forward(
         padding, dilation, outPadding, _subM, _transpose);
 #else
     AT_ERROR("get_indice_pairs is not compiled with GPU support");
+#endif
+#ifdef MMCV_WITH_XPU
+  } else if (indices.device().type() == at::kXPU) {
+    CHECK_XPU_INPUT(indices);
+
+    return get_indice_pairs_forward_xpu<NDim>(
+        indices, batchSize, outSpatialShape, spatialShape, kernelSize, stride,
+        padding, dilation, outPadding, _subM, _transpose);
 #endif
 #ifdef MMCV_WITH_MLU
   } else if (indices.device().type() == at::kMLU) {
@@ -120,6 +156,15 @@ std::vector<torch::Tensor> get_indice_pairs_backward(
         stride, padding, dilation, outPadding, _subM, _transpose);
 #else
     AT_ERROR("get_indice_pairs is not compiled with GPU support");
+#endif
+#ifdef MMCV_WITH_XPU
+  } else if (indices.device().type() == at::kXPU) {
+    CHECK_XPU_INPUT(indices);
+    CHECK_XPU_INPUT(gridOut);
+
+    return get_indice_pairs_backward_xpu<NDim>(
+        indices, gridOut, batchSize, outSpatialShape, spatialShape, kernelSize,
+        stride, padding, dilation, outPadding, _subM, _transpose);
 #endif
   } else {
     AT_ERROR("get_indice_pairs is not implemented on CPU");
