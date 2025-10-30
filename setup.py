@@ -38,9 +38,10 @@ def choose_requirement(primary, secondary):
 
 def get_version():
     version_file = 'mmcv/version.py'
+    scope = {}
     with open(version_file, encoding='utf-8') as f:
-        exec(compile(f.read(), version_file, 'exec'))
-    return locals()['__version__']
+        exec(compile(f.read(), version_file, 'exec'), scope)
+    return scope['__version__']
 
 
 def parse_requirements(fname='requirements/runtime.txt', with_version=True):
@@ -267,6 +268,22 @@ def get_extensions():
             include_dirs.append(os.path.abspath('./mmcv/ops/csrc/pytorch'))
             include_dirs.append(os.path.abspath('./mmcv/ops/csrc/common'))
             include_dirs.append(os.path.abspath('./mmcv/ops/csrc/common/cuda'))
+        elif (hasattr(torch, 'xpu') and torch.xpu.is_available()) or \
+                os.getenv('FORCE_XPU', '0') == '1':
+            print(f'Compiling {ext_name} with CPU and XPU')
+            define_macros += [('MMCV_WITH_XPU', None)]
+            op_files = glob.glob('./mmcv/ops/csrc/pytorch/*.cpp') + \
+                glob.glob('./mmcv/ops/csrc/pytorch/cpu/*.cpp')
+            xpu_files = glob.glob('./mmcv/ops/csrc/pytorch/xpu/*.cpp') + \
+                glob.glob('./mmcv/ops/csrc/pytorch/xpu/*.dp.cpp')
+            op_files += sorted(set(xpu_files))
+            extension = CppExtension
+            include_dirs.append(os.path.abspath('./mmcv/ops/csrc/common'))
+            include_dirs.append(os.path.abspath('./mmcv/ops/csrc/pytorch/xpu'))
+            include_dirs.append(os.path.abspath('./mmcv/dpct_stubs'))
+            extra_compile_args.setdefault('cxx', [])
+            extra_compile_args['cxx'] += ['-fsycl', '-fsycl-unnamed-lambda']
+            extra_link_args.append('-fsycl')
         elif (hasattr(torch, 'is_mlu_available') and
                 torch.is_mlu_available()) or \
                 os.getenv('FORCE_MLU', '0') == '1':
