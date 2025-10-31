@@ -2,12 +2,28 @@ import glob
 import os
 import platform
 import re
+import shutil
+from pathlib import Path
 from pkg_resources import DistributionNotFound, get_distribution, parse_version
 from setuptools import find_packages, setup
 
 EXT_TYPE = ''
 try:
     import torch
+    def _wrap_build_ext(base_cls):
+        class BuildExtWithCopy(base_cls):
+
+            def build_extension(self, ext):
+                super().build_extension(ext)
+                if ext.name != 'mmcv._ext':
+                    return
+                ext_path = Path(self.get_ext_fullpath(ext.name))
+                repo_copy = Path(__file__).resolve().parent / 'mmcv' / ext_path.name
+                repo_copy.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(ext_path, repo_copy)
+
+        return BuildExtWithCopy
+
     if torch.__version__ == 'parrots':
         from parrots.utils.build_extension import BuildExtension
         EXT_TYPE = 'parrots'
@@ -18,7 +34,7 @@ try:
     else:
         from torch.utils.cpp_extension import BuildExtension
         EXT_TYPE = 'pytorch'
-    cmd_class = {'build_ext': BuildExtension}
+    cmd_class = {'build_ext': _wrap_build_ext(BuildExtension)}
 except ModuleNotFoundError:
     cmd_class = {}
     print('Skip building ext ops due to the absence of torch.')
