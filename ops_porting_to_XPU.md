@@ -24,15 +24,15 @@ This document summarizes the porting of MMCV's sparse convolution and reordering
 
 #### Method 1: (Recommended for native code changes)
 ```bash
-cd ~/chuansheng/mmcv
+cd /path/to/mmcv
 FORCE_XPU=1 CXX=icpx CC=icpx python setup.py build_ext --inplace
-export PYTHONPATH=/home/intel/chuansheng/mmcv:/home/intel/chuansheng/mmdetection3d:$PYTHONPATH
+export PYTHONPATH=/path/to/mmcv:/path/to/mmdetection3d:$PYTHONPATH
 ```
 This method ensures all native (C++/SYCL) code is rebuilt and available for import. Use this especially if you modify native code and want to avoid issues with develop mode not always rebuilding extensions.
 
 #### Method 2: (Editable Python, but may not always rebuild native code)
 ```bash
-cd ~/chuansheng/mmcv
+cd /path/to/mmcv
 FORCE_XPU=1 CXX=icpx CC=icpx python setup.py develop
 ```
 This command installs MMCV in development (editable) mode, so Python changes are reflected immediately. However, in some cases, changes in native code may not trigger a rebuild. Use Method 1 above if you encounter this issue, until further investigation.
