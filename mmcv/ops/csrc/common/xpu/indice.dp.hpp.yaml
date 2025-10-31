@@ -1,7 +1,7 @@
 ---
-MainSourceFile:  '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/common/xpu/indice.dp.hpp'
+MainSourceFile:  'mmcv/ops/csrc/common/xpu/indice.dp.hpp'
 Replacements:
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/common/cuda/spconv/indice.cuh'
+  - FilePath:        'mmcv/ops/csrc/common/cuda/spconv/indice.cuh'
     Offset:          627
     Length:          0
     ReplacementText: "#include <sycl/sycl.hpp>\n#include <dpct/dpct.hpp>\n"
@@ -10,7 +10,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/common/cuda/spconv/indice.cuh'
+  - FilePath:        'mmcv/ops/csrc/common/cuda/spconv/indice.cuh'
     Offset:          870
     Length:          11
     ReplacementText: ''
@@ -19,7 +19,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/common/cuda/spconv/indice.cuh'
+  - FilePath:        'mmcv/ops/csrc/common/cuda/spconv/indice.cuh'
     Offset:          2703
     Length:          11
     ReplacementText: ''
@@ -28,7 +28,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/common/cuda/spconv/indice.cuh'
+  - FilePath:        'mmcv/ops/csrc/common/cuda/spconv/indice.cuh'
     Offset:          4514
     Length:          11
     ReplacementText: ''
@@ -37,7 +37,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/common/cuda/spconv/indice.cuh'
+  - FilePath:        'mmcv/ops/csrc/common/cuda/spconv/indice.cuh'
     Offset:          5211
     Length:          11
     ReplacementText: ''
@@ -46,7 +46,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/common/cuda/spconv/indice.cuh'
+  - FilePath:        'mmcv/ops/csrc/common/cuda/spconv/indice.cuh'
     Offset:          5825
     Length:          11
     ReplacementText: ''
@@ -55,7 +55,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/common/cuda/spconv/indice.cuh'
+  - FilePath:        'mmcv/ops/csrc/common/cuda/spconv/indice.cuh'
     Offset:          6554
     Length:          11
     ReplacementText: ''
@@ -64,7 +64,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/common/cuda/spconv/indice.cuh'
+  - FilePath:        'mmcv/ops/csrc/common/cuda/spconv/indice.cuh'
     Offset:          8105
     Length:          11
     ReplacementText: ''
@@ -73,7 +73,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/common/cuda/spconv/indice.cuh'
+  - FilePath:        'mmcv/ops/csrc/common/cuda/spconv/indice.cuh'
     Offset:          8439
     Length:          11
     ReplacementText: ''
@@ -95,7 +95,7 @@ OptionMap:
   AnalysisScopePath:
     Value:           ''
     ValueVec:
-      - '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/common/cuda/spconv'
+      - 'mmcv/ops/csrc/common/cuda/spconv'
     Specified:       false
   AsyncHandler:
     Value:           'false'
