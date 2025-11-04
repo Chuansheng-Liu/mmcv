@@ -18,21 +18,22 @@ This document summarizes the porting of MMCV's sparse convolution and reordering
 - Intel® oneAPI DPC++/SYCL toolchain (2025+ recommended)
 - PyTorch with XPU support (2.4+)
 - Python 3.9+
+- Export `MMCV_ROOT` (and optionally `MMDET3D_ROOT`) to point at your local checkouts.
 
 
 ### Build MMCV with XPU Support (Recommended)
 
 #### Method 1: (Recommended for native code changes)
 ```bash
-cd ~/chuansheng/mmcv
+cd "$MMCV_ROOT"
 FORCE_XPU=1 CXX=icpx CC=icpx python setup.py build_ext --inplace
-export PYTHONPATH=/home/intel/chuansheng/mmcv:/home/intel/chuansheng/mmdetection3d:$PYTHONPATH
+export PYTHONPATH="${MMCV_ROOT}${MMDET3D_ROOT:+:${MMDET3D_ROOT}}${PYTHONPATH:+:${PYTHONPATH}}"
 ```
 This method ensures all native (C++/SYCL) code is rebuilt and available for import. Use this especially if you modify native code and want to avoid issues with develop mode not always rebuilding extensions.
 
 #### Method 2: (Editable Python, but may not always rebuild native code)
 ```bash
-cd ~/chuansheng/mmcv
+cd "$MMCV_ROOT"
 FORCE_XPU=1 CXX=icpx CC=icpx python setup.py develop
 ```
 This command installs MMCV in development (editable) mode, so Python changes are reflected immediately. However, in some cases, changes in native code may not trigger a rebuild. Use Method 1 above if you encounter this issue, until further investigation.

@@ -1,7 +1,7 @@
 ---
-MainSourceFile:  '/home/intel/chuansheng/mmcv/MainSrcFiles_placehold'
+MainSourceFile:  'MainSrcFiles_placehold'
 Replacements:
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          585
     Length:          0
     ReplacementText: "#include <sycl/sycl.hpp>\n#include <dpct/dpct.hpp>\n"
@@ -10,7 +10,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          2037
     Length:          0
     ReplacementText: "      /*\n      DPCT1049:0: The work-group size passed to the SYCL kernel may exceed the limit. To get the device limit, query info::device::max_work_group_size. Adjust the work-group size if needed.\n      */\n"
@@ -19,7 +19,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          2043
     Length:          360
   ReplacementText: "((sycl::queue*)(d.getStream()))->parallel_for<dpct_kernel_name<class prepareDeConvIndicePairsKernel_68c355, Index, IndexGrid, dpct_kernel_scalar<NDim>, dpct_kernel_scalar<4096>>>(\n        sycl::nd_range<3>(sycl::range<3>(1, 1, tv::launch::getBlocks(numActIn)) * sycl::range<3>(1, 1, tv::launch::CUDA_NUM_THREADS), sycl::range<3>(1, 1, tv::launch::CUDA_NUM_THREADS)), \n        [=](sycl::nd_item<3> item_ct1) {\n          prepareDeConvIndicePairsKernel<Index, IndexGrid, NDim, 4096>(item_ct1, indicesIn, indicesOut, gridsOut, indicePairs, indiceNum, indicePairUnique, kernelSize, stride, padding, dilation, outSpatialShape);\n        });"
@@ -28,7 +28,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: true
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          2403
     Length:          1
     ReplacementText: ''
@@ -37,7 +37,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          2414
     Length:          0
     ReplacementText: "      /*\n      DPCT1049:1: The work-group size passed to the SYCL kernel may exceed the limit. To get the device limit, query info::device::max_work_group_size. Adjust the work-group size if needed.\n      */\n"
@@ -46,7 +46,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          2420
     Length:          354
   ReplacementText: "((sycl::queue*)(d.getStream()))->parallel_for<dpct_kernel_name<class prepareIndicePairsKernel_528f37, Index, IndexGrid, dpct_kernel_scalar<NDim>, dpct_kernel_scalar<4096>>>(\n        sycl::nd_range<3>(sycl::range<3>(1, 1, tv::launch::getBlocks(numActIn)) * sycl::range<3>(1, 1, tv::launch::CUDA_NUM_THREADS), sycl::range<3>(1, 1, tv::launch::CUDA_NUM_THREADS)), \n        [=](sycl::nd_item<3> item_ct1) {\n          prepareIndicePairsKernel<Index, IndexGrid, NDim, 4096>(item_ct1, indicesIn, indicesOut, gridsOut, indicePairs, indiceNum, indicePairUnique, kernelSize, stride, padding, dilation, outSpatialShape);\n        });"
@@ -55,7 +55,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: true
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          2774
     Length:          1
     ReplacementText: ''
@@ -64,7 +64,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          2776
     Length:          0
     ReplacementText: "    /*\n    DPCT1010:10: SYCL uses exceptions to report errors and does not use the error codes. The cudaGetLastError function call was replaced with 0. You need to rewrite this code.\n    */\n    /*\n    DPCT1001:8: The statement could not be removed.\n    */\n    /*\n    DPCT1000:9: Error handling if-stmt was detected but could not be rewritten.\n    */\n"
@@ -73,7 +73,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          2780
     Length:          19
     ReplacementText: '0'
@@ -82,7 +82,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          3642
     Length:          0
     ReplacementText: "    /*\n    DPCT1049:2: The work-group size passed to the SYCL kernel may exceed the limit. To get the device limit, query info::device::max_work_group_size. Adjust the work-group size if needed.\n    */\n"
@@ -91,7 +91,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          3646
     Length:          272
     ReplacementText: "((sycl::queue*)(d.getStream()))->parallel_for<dpct_kernel_name<class assignGridAndIndiceOutKernel_3baf38, Index, IndexGrid, dpct_kernel_scalar<NDim>>>(\n      sycl::nd_range<3>(sycl::range<3>(1, 1, tv::launch::getBlocks(numAct)) * sycl::range<3>(1, 1, tv::launch::CUDA_NUM_THREADS), sycl::range<3>(1, 1, tv::launch::CUDA_NUM_THREADS)), \n      [=](sycl::nd_item<3> item_ct1) {\n        assignGridAndIndiceOutKernel<Index, IndexGrid, NDim>(indicesOut, gridsOut, numAct, indicePairs, indicePairUnique, outSpatialShape, batchSize);\n      });"
@@ -100,7 +100,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: true
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          3918
     Length:          1
     ReplacementText: ''
@@ -109,7 +109,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          3920
     Length:          0
     ReplacementText: "    /*\n    DPCT1010:13: SYCL uses exceptions to report errors and does not use the error codes. The cudaGetLastError function call was replaced with 0. You need to rewrite this code.\n    */\n    /*\n    DPCT1001:11: The statement could not be removed.\n    */\n    /*\n    DPCT1000:12: Error handling if-stmt was detected but could not be rewritten.\n    */\n"
@@ -118,7 +118,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          3924
     Length:          19
     ReplacementText: '0'
@@ -127,7 +127,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          3945
     Length:          0
     ReplacementText: "    /*\n    DPCT1049:3: The work-group size passed to the SYCL kernel may exceed the limit. To get the device limit, query info::device::max_work_group_size. Adjust the work-group size if needed.\n    */\n"
@@ -136,7 +136,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          3949
     Length:          260
     ReplacementText: "((sycl::queue*)(d.getStream()))->parallel_for<dpct_kernel_name<class assignIndicePairsKernel_5bbafb, Index, IndexGrid, dpct_kernel_scalar<NDim>>>(\n      sycl::nd_range<3>(sycl::range<3>(1, 1, tv::launch::getBlocks(numActIn)) * sycl::range<3>(1, 1, tv::launch::CUDA_NUM_THREADS), sycl::range<3>(1, 1, tv::launch::CUDA_NUM_THREADS)), \n      [=](sycl::nd_item<3> item_ct1) {\n        assignIndicePairsKernel<Index, IndexGrid, NDim>(indicesOut, gridsOut, numActIn, indicePairs, indicePairUnique, outSpatialShape);\n      });"
@@ -145,7 +145,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: true
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          4209
     Length:          1
     ReplacementText: ''
@@ -154,7 +154,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          4211
     Length:          0
     ReplacementText: "    /*\n    DPCT1010:16: SYCL uses exceptions to report errors and does not use the error codes. The cudaGetLastError function call was replaced with 0. You need to rewrite this code.\n    */\n    /*\n    DPCT1001:14: The statement could not be removed.\n    */\n    /*\n    DPCT1000:15: Error handling if-stmt was detected but could not be rewritten.\n    */\n"
@@ -163,7 +163,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          4215
     Length:          19
     ReplacementText: '0'
@@ -172,7 +172,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          4258
     Length:          0
     ReplacementText: "      /*\n      DPCT1049:4: The work-group size passed to the SYCL kernel may exceed the limit. To get the device limit, query info::device::max_work_group_size. Adjust the work-group size if needed.\n      */\n"
@@ -181,7 +181,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          4264
     Length:          189
   ReplacementText: "((sycl::queue*)(d.getStream()))->submit(\n        [&](sycl::handler &cgh) {\n          auto indicePairUnique_data_ct0 = indicePairUnique.data();\n\n          cgh.parallel_for<dpct_kernel_name<class resetGridKernel_468d89, Index, IndexGrid, dpct_kernel_scalar<NDim>>>(\n            sycl::nd_range<3>(sycl::range<3>(1, 1, tv::launch::getBlocks(numAct)) * sycl::range<3>(1, 1, tv::launch::CUDA_NUM_THREADS), sycl::range<3>(1, 1, tv::launch::CUDA_NUM_THREADS)), \n            [=](sycl::nd_item<3> item_ct1) {\n              resetGridKernel<Index, IndexGrid, NDim>(item_ct1, indicePairUnique_data_ct0, gridsOut, numAct);\n            });\n        });"
@@ -190,7 +190,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: true
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          4453
     Length:          1
     ReplacementText: ''
@@ -199,7 +199,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          4455
     Length:          0
     ReplacementText: "      /*\n      DPCT1010:19: SYCL uses exceptions to report errors and does not use the error codes. The cudaGetLastError function call was replaced with 0. You need to rewrite this code.\n      */\n      /*\n      DPCT1001:17: The statement could not be removed.\n      */\n      /*\n      DPCT1000:18: Error handling if-stmt was detected but could not be rewritten.\n      */\n"
@@ -208,7 +208,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          4461
     Length:          19
     ReplacementText: '0'
@@ -217,7 +217,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          5348
     Length:          0
     ReplacementText: "    /*\n    DPCT1049:5: The work-group size passed to the SYCL kernel may exceed the limit. To get the device limit, query info::device::max_work_group_size. Adjust the work-group size if needed.\n    */\n"
@@ -226,7 +226,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          5352
     Length:          188
   ReplacementText: "((sycl::queue*)(d.getStream()))->parallel_for<dpct_kernel_name<class prepareSubMGridKernel_6d7b88, Index, IndexGrid, dpct_kernel_scalar<NDim>>>(\n      sycl::nd_range<3>(sycl::range<3>(1, 1, tv::launch::getBlocks(numActIn)) * sycl::range<3>(1, 1, tv::launch::CUDA_NUM_THREADS), sycl::range<3>(1, 1, tv::launch::CUDA_NUM_THREADS)), \n      [=](sycl::nd_item<3> item_ct1) {\n        prepareSubMGridKernel<Index, IndexGrid, NDim>(item_ct1, indicesIn, gridsOut, outSpatialShape);\n      });"
@@ -235,7 +235,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: true
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          5540
     Length:          1
     ReplacementText: ''
@@ -244,7 +244,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          5542
     Length:          0
     ReplacementText: "    /*\n    DPCT1010:22: SYCL uses exceptions to report errors and does not use the error codes. The cudaGetLastError function call was replaced with 0. You need to rewrite this code.\n    */\n    /*\n    DPCT1001:20: The statement could not be removed.\n    */\n    /*\n    DPCT1000:21: Error handling if-stmt was detected but could not be rewritten.\n    */\n"
@@ -253,7 +253,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          5546
     Length:          19
     ReplacementText: '0'
@@ -262,7 +262,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          5567
     Length:          0
     ReplacementText: "    /*\n    DPCT1049:6: The work-group size passed to the SYCL kernel may exceed the limit. To get the device limit, query info::device::max_work_group_size. Adjust the work-group size if needed.\n    */\n"
@@ -271,7 +271,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          5571
     Length:          316
   ReplacementText: "((sycl::queue*)(d.getStream()))->parallel_for<dpct_kernel_name<class getSubMIndicePairsKernel_79425b, Index, IndexGrid, dpct_kernel_scalar<NDim>, dpct_kernel_scalar<4096>>>(\n      sycl::nd_range<3>(sycl::range<3>(1, 1, tv::launch::getBlocks(numActIn)) * sycl::range<3>(1, 1, tv::launch::CUDA_NUM_THREADS), sycl::range<3>(1, 1, tv::launch::CUDA_NUM_THREADS)), \n      [=](sycl::nd_item<3> item_ct1) {\n        getSubMIndicePairsKernel<Index, IndexGrid, NDim, 4096>(item_ct1, indicesIn, gridsOut, indicePairs, indiceNum, kernelSize, stride, padding, dilation, outSpatialShape);\n      });"
@@ -280,7 +280,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: true
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          5887
     Length:          1
     ReplacementText: ''
@@ -289,7 +289,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          5889
     Length:          0
     ReplacementText: "    /*\n    DPCT1010:25: SYCL uses exceptions to report errors and does not use the error codes. The cudaGetLastError function call was replaced with 0. You need to rewrite this code.\n    */\n    /*\n    DPCT1001:23: The statement could not be removed.\n    */\n    /*\n    DPCT1000:24: Error handling if-stmt was detected but could not be rewritten.\n    */\n"
@@ -298,7 +298,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          5893
     Length:          19
     ReplacementText: '0'
@@ -307,7 +307,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          5936
     Length:          0
     ReplacementText: "      /*\n      DPCT1049:7: The work-group size passed to the SYCL kernel may exceed the limit. To get the device limit, query info::device::max_work_group_size. Adjust the work-group size if needed.\n      */\n"
@@ -316,7 +316,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          5942
     Length:          237
   ReplacementText: "((sycl::queue*)(d.getStream()))->submit(\n        [&](sycl::handler &cgh) {\n          auto indicesIn_data_ct0 = indicesIn.data();\n\n          cgh.parallel_for<dpct_kernel_name<class resetGridSubMKernel_93cf59, Index, IndexGrid, dpct_kernel_scalar<NDim>>>(\n            sycl::nd_range<3>(sycl::range<3>(1, 1, tv::launch::getBlocks(numActIn)) * sycl::range<3>(1, 1, tv::launch::CUDA_NUM_THREADS), sycl::range<3>(1, 1, tv::launch::CUDA_NUM_THREADS)), \n            [=](sycl::nd_item<3> item_ct1) {\n              resetGridSubMKernel<Index, IndexGrid, NDim>(item_ct1, indicesIn_data_ct0, gridsOut, outSpatialShape, numActIn);\n            });\n        });"
@@ -325,7 +325,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: true
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          6179
     Length:          1
     ReplacementText: ''
@@ -334,7 +334,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          6181
     Length:          0
     ReplacementText: "      /*\n      DPCT1010:28: SYCL uses exceptions to report errors and does not use the error codes. The cudaGetLastError function call was replaced with 0. You need to rewrite this code.\n      */\n      /*\n      DPCT1001:26: The statement could not be removed.\n      */\n      /*\n      DPCT1000:27: Error handling if-stmt was detected but could not be rewritten.\n      */\n"
@@ -343,7 +343,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Offset:          6187
     Length:          19
     ReplacementText: '0'
@@ -352,7 +352,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/spconv_ops_cuda.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/spconv_ops_cuda.cu'
     Offset:          0
     Length:          30
     ReplacementText: "#include <sycl/sycl.hpp>\n#include <dpct/dpct.hpp>\n"
@@ -361,7 +361,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/spconv_ops_cuda.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/spconv_ops_cuda.cu'
     Offset:          287
     Length:          0
     ReplacementText: "\n#include <cmath>\n"
@@ -370,7 +370,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/spconv_ops_cuda.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/spconv_ops_cuda.cu'
     Offset:          12773
     Length:          0
     ReplacementText: "    /*\n    DPCT1010:2: SYCL uses exceptions to report errors and does not use the error codes. The cudaGetLastError function call was replaced with 0. You need to rewrite this code.\n    */\n    /*\n    DPCT1001:0: The statement could not be removed.\n    */\n    /*\n    DPCT1000:1: Error handling if-stmt was detected but could not be rewritten.\n    */\n"
@@ -379,7 +379,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/spconv_ops_cuda.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/spconv_ops_cuda.cu'
     Offset:          13871
     Length:          0
     ReplacementText: "            /*\n            DPCT1010:2: SYCL uses exceptions to report errors and does not use the error codes. The cudaGetLastError function call was replaced with 0. You need to rewrite this code.\n            */\n            /*\n            DPCT1001:0: The statement could not be removed.\n            */\n            /*\n            DPCT1000:1: Error handling if-stmt was detected but could not be rewritten.\n            */\n"
@@ -388,7 +388,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/spconv_ops_cuda.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/spconv_ops_cuda.cu'
     Offset:          13883
     Length:          19
     ReplacementText: '0'
@@ -397,7 +397,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/spconv_ops_cuda.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/spconv_ops_cuda.cu'
     Offset:          15127
     Length:          0
     ReplacementText: "            /*\n            DPCT1010:5: SYCL uses exceptions to report errors and does not use the error codes. The cudaGetLastError function call was replaced with 0. You need to rewrite this code.\n            */\n            /*\n            DPCT1001:3: The statement could not be removed.\n            */\n            /*\n            DPCT1000:4: Error handling if-stmt was detected but could not be rewritten.\n            */\n"
@@ -406,7 +406,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/spconv_ops_cuda.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/spconv_ops_cuda.cu'
     Offset:          15139
     Length:          19
     ReplacementText: '0'
@@ -415,7 +415,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/spconv_ops_cuda.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/spconv_ops_cuda.cu'
     Offset:          17087
     Length:          0
     ReplacementText: "    /*\n    DPCT1010:5: SYCL uses exceptions to report errors and does not use the error codes. The cudaGetLastError function call was replaced with 0. You need to rewrite this code.\n    */\n    /*\n    DPCT1001:3: The statement could not be removed.\n    */\n    /*\n    DPCT1000:4: Error handling if-stmt was detected but could not be rewritten.\n    */\n"
@@ -424,7 +424,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/spconv_ops_cuda.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/spconv_ops_cuda.cu'
     Offset:          18348
     Length:          0
     ReplacementText: "            /*\n            DPCT1010:8: SYCL uses exceptions to report errors and does not use the error codes. The cudaGetLastError function call was replaced with 0. You need to rewrite this code.\n            */\n            /*\n            DPCT1001:6: The statement could not be removed.\n            */\n            /*\n            DPCT1000:7: Error handling if-stmt was detected but could not be rewritten.\n            */\n"
@@ -433,7 +433,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/spconv_ops_cuda.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/spconv_ops_cuda.cu'
     Offset:          18360
     Length:          19
     ReplacementText: '0'
@@ -442,7 +442,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/spconv_ops_cuda.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/spconv_ops_cuda.cu'
     Offset:          18631
     Length:          0
     ReplacementText: "            /*\n            DPCT1010:11: SYCL uses exceptions to report errors and does not use the error codes. The cudaGetLastError function call was replaced with 0. You need to rewrite this code.\n            */\n            /*\n            DPCT1001:9: The statement could not be removed.\n            */\n            /*\n            DPCT1000:10: Error handling if-stmt was detected but could not be rewritten.\n            */\n"
@@ -451,7 +451,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/spconv_ops_cuda.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/spconv_ops_cuda.cu'
     Offset:          18643
     Length:          19
     ReplacementText: '0'
@@ -460,7 +460,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/spconv_ops_cuda.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/spconv_ops_cuda.cu'
     Offset:          19860
     Length:          0
     ReplacementText: "            /*\n            DPCT1010:14: SYCL uses exceptions to report errors and does not use the error codes. The cudaGetLastError function call was replaced with 0. You need to rewrite this code.\n            */\n            /*\n            DPCT1001:12: The statement could not be removed.\n            */\n            /*\n            DPCT1000:13: Error handling if-stmt was detected but could not be rewritten.\n            */\n"
@@ -469,7 +469,7 @@ Replacements:
     InitStr:         ''
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
-  - FilePath:        '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/spconv_ops_cuda.cu'
+  - FilePath:        'mmcv/ops/csrc/pytorch/cuda/spconv_ops_cuda.cu'
     Offset:          19872
     Length:          19
     ReplacementText: '0'
@@ -479,10 +479,10 @@ Replacements:
     NewHostVarName:  ''
     BlockLevelFormatFlag: false
 MainSourceFilesDigest:
-  - MainSourceFile:  '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
+  - MainSourceFile:  'mmcv/ops/csrc/pytorch/cuda/sparse_indice.cu'
     Digest:          9acabbbf403e58fde4f946a237473ed7
     HasCUDASyntax:   true
-  - MainSourceFile:  '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda/spconv_ops_cuda.cu'
+  - MainSourceFile:  'mmcv/ops/csrc/pytorch/cuda/spconv_ops_cuda.cu'
     Digest:          281bd1c122d273f5072828798d88b32d
     HasCUDASyntax:   true
 DpctVersion:     2025.1.0
@@ -494,7 +494,7 @@ OptionMap:
   AnalysisScopePath:
     Value:           ''
     ValueVec:
-      - '/home/intel/chuansheng/mmcv/mmcv/ops/csrc/pytorch/cuda'
+      - 'mmcv/ops/csrc/pytorch/cuda'
     Specified:       false
   AsyncHandler:
     Value:           'false'
