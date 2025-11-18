@@ -14,6 +14,11 @@
 
 import torch
 
+try:
+    from torch._subclasses.fake_tensor import FakeTensor
+except ImportError:  # pragma: no cover
+    FakeTensor = None  # type: ignore[assignment]
+
 from ..utils import ext_loader
 
 ext_module = ext_loader.load_ext('_ext', [
@@ -62,6 +67,18 @@ def get_indice_pairs(indices,
                      subm=False,
                      transpose=False,
                      grid=None):
+    if FakeTensor is not None and isinstance(indices, FakeTensor):
+        kernel_size = ksize if isinstance(ksize, (list, tuple)) else [ksize] * (indices.shape[1] - 1)
+        kernel_volume = 1
+        for k in kernel_size:
+            kernel_volume *= max(int(k), 1)
+
+        sym_num_out = indices.shape[0]
+        outids = indices.new_empty((sym_num_out, indices.shape[1]))
+        indice_pairs = indices.new_empty((kernel_volume, 2, sym_num_out))
+        indice_pair_num = indices.new_empty((kernel_volume,), dtype=torch.int32)
+        return outids, indice_pairs, indice_pair_num
+
     ndim = indices.shape[1] - 1
     if not isinstance(ksize, (list, tuple)):
         ksize = [ksize] * ndim
@@ -120,6 +137,10 @@ def indice_conv(features,
                 num_activate_out,
                 inverse=False,
                 subm=False):
+    if FakeTensor is not None and isinstance(features, FakeTensor):
+        out_channels = filters.shape[-1]
+        num_out = num_activate_out if not isinstance(num_activate_out, torch.Tensor) else num_activate_out.item()
+        return features.new_empty((num_out, out_channels))
     if filters.dtype == torch.float32 or filters.dtype == torch.half:
         return ext_module.indice_conv_forward(features, filters, indice_pairs,
                                               indice_pair_num,
